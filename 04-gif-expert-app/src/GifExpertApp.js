@@ -1,26 +1,22 @@
 import React, { useState } from "react";
-import AddCategory from "./AddCategory";
-// import PropTypes from 'prop-types'
+import AddCategory from "./components/AddCategory";
+import GifGrid from "./components/GifGrid";
 
-function GifExpertApp(props) {
-    // const categories = ["One punch", "Samuray", "Dragon"];
-    const [categories, setCategories] = useState(["One punch", "Samuray", "Dragon",]);
+
+function GifExpertApp() {
+    const [categories, setCategories] = useState(["One"]);
     return (
         <div>
             <h2>GifExpertApp</h2>
             <AddCategory setCategories={setCategories} />
-            <hr></hr>
-            <ol>
-                {categories.map((item) => {
-                    return <li key={item}>{item}</li>;
-                })}
+            <br />
+            <ol>{
+                categories.map(item => {
+                    return <GifGrid key={item} item={item} />;
+                })
+            }
             </ol>
         </div>
     );
 }
-
-// GifExpertApp.propTypes = {
-
-// }
-
 export default GifExpertApp;
