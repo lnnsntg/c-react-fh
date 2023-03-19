@@ -1,8 +1,9 @@
-import { nanoid } from 'nanoid'
 import React, { useState } from 'react'
-import { AddCategory } from './components/AddCategory'
-
 import './styles.css'
+import { nanoid } from 'nanoid'
+
+import { AddCategory } from './components/AddCategory'
+import { GifGrid } from './components/GifGrid'
 
 const GifExpertApp = () => {
   const [categories, setCategories] = useState([])
@@ -23,13 +24,9 @@ const GifExpertApp = () => {
         }}
       />
 
-      <ol>
-        {categories.map(category => {
-          const key = nanoid()
-          console.log(key)
-          return <li key={key}>{category}</li>
-        })}
-      </ol>
+      {categories.map(category => (
+        <GifGrid key={nanoid()} category={category} />
+      ))}
     </>
   )
 }
