@@ -1,26 +1,28 @@
-import React, { useState } from "react";
+import React, { useState } from 'react'
 
-export const AddCategory = ({ setCategories }) => {
-    const [inputValue, setInputValue] = useState('Daenerys Stormborn');
+export const AddCategory = ({ onNewCategory }) => {
+    const [inputValue, setInputValue] = useState('')
 
-    const onInputChange = (event) => {
-        setInputValue(event.target.value);
-    };
+    const onInputChange = event => setInputValue(event.target.value)
 
-    const onSubmit = (event) => {
-        event.preventDefault();
+    const onSubmit = event => {
+        event.preventDefault()
 
-        setCategories((categories) => {[inputValue, ...categories]});
-    };
+        if (inputValue.trim().length < 1) return
+
+        onNewCategory(inputValue.trim())
+
+        setInputValue('')
+    }
 
     return (
-        <form onSubmit={(event) => onSubmit(event)}>
+        <form onSubmit={onSubmit}>
             <input
-                type="text"
-                placeholder="Buscar gifs"
+                type='text'
+                placeholder='Buscar gifs'
                 value={inputValue}
                 onChange={onInputChange}
             />
         </form>
-    );
-};
+    )
+}

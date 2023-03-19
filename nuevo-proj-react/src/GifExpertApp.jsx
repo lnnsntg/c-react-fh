@@ -1,32 +1,37 @@
-import React, { useState } from "react";
-import { AddCategory } from "./components/AddCategory";
-import "./styles.css";
+import { nanoid } from 'nanoid'
+import React, { useState } from 'react'
+import { AddCategory } from './components/AddCategory'
+
+import './styles.css'
 
 const GifExpertApp = () => {
-  const [categories, setCategories] = useState([
-    "Robert Baratheon",
-    "Rhaegar Targaryen",
-  ]);
+  const [categories, setCategories] = useState([])
 
-  const onAddCategory = () => {
-    setCategories([...categories, "hola"]);
-  };
+  const onAddCategory = newCategory => {
+    if (categories.includes(newCategory)) return
+
+    setCategories([newCategory, ...categories])
+  }
 
   return (
     <>
       <h2>GifExpertApp</h2>
 
-      <AddCategory />
-
-      <button onClick={onAddCategory} style={{ marginTop: "20px" }}>AGREGAR</button>
+      <AddCategory
+        onNewCategory={event => {
+          onAddCategory(event)
+        }}
+      />
 
       <ol>
-        {categories.map((category) => {
-          return <li key={Math.random(Date.now())}>{category}</li>;
+        {categories.map(category => {
+          const key = nanoid()
+          console.log(key)
+          return <li key={key}>{category}</li>
         })}
       </ol>
     </>
-  );
-};
+  )
+}
 
-export default GifExpertApp;
+export default GifExpertApp
