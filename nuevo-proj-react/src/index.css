@@ -1,7 +1,8 @@
 :root {
   font-family: 'Raleway', sans-serif;
   line-height: 1.5;
-  background-color: rgb(234, 234, 234);
+  background: linear-gradient(to bottom, #ff9900 0%, #ff99cc 100%);
+  ;
 }
 
 a {

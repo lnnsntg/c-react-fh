@@ -1,9 +1,12 @@
+import { nanoid } from "nanoid"
+import { getGifs } from "../helpers/getGifs"
 
+export const GifGrid = ({ category }) => {
+    getGifs(category)
 
-export const GifGrid = ({category}) => {
-  return (
-    <>
-    <h4>{category}</h4>
-    </>
-  )
+    return (
+        <>
+            <h4>{category}</h4>
+        </>
+    )
 }
